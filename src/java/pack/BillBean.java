@@ -27,13 +27,10 @@ public class BillBean extends Object implements Serializable {
             ResultSet rs=stat.executeQuery();
             
             while(rs.next()){
-                Product flower=new Product();
-                flower.setId(rs.getInt("product_id"));
-                flower.setName(rs.getString("product_name"));
-                flower.setPrice(rs.getFloat("product_price"));
-                flower.setDescribe(rs.getString("product_describe"));
-                flower.setSales(rs.getInt("product_sales"));
-                result.add(flower);
+                Order order=new Order();
+                order.setOrder_id(rs.getInt("order_id"));
+                order.setProduct_id(rs.getInt("product_id"));
+                result.add(order);
             }
         }
         catch(Exception e){
