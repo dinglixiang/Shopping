@@ -21,7 +21,9 @@
             int flag=flower.StoreBill(id);
             if(flag==1)
             {
-                out.println("订单生成成功");
+                %>
+                    
+                <%
             }
             else{
                 out.println("提交订单失败！");
