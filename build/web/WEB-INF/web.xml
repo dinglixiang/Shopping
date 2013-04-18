@@ -4,9 +4,17 @@
         <servlet-name>StoreBillSession</servlet-name>
         <servlet-class>pack.StoreBill</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShopCart</servlet-name>
+        <servlet-class>pack.ShopCart</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>StoreBillSession</servlet-name>
         <url-pattern>/StoreBillSession</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShopCart</servlet-name>
+        <url-pattern>/ShopCart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

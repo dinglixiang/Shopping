@@ -21,9 +21,10 @@
                    <a href="./Register.jsp" class="navbar-link">   Register</a>
                 </p>
                 <ul class="nav">
-                  <li  class="active"><a href=".">首页</a></li>
+                  <li  class="active"><a href=".">首页</a></li>                 
+                  <li><a href="./Cart.jsp">我的小车</a></li>
+                  <li><a href="./Bill.jsp">历史订单</a></li>
                   <li><a href="./About.jsp">关于我们</a></li>
-                  <li><a href="./NewProduct.jsp">新建产品</a></li>
                 </ul>
               </div>
             </div>
@@ -84,7 +85,7 @@
                           <p><a class="btn" href="#">View details »</a></p>
                       </div>
                   </div>
-                  <hr>
+                  <hr width="100%" color="#ADADAD" SIZE=3>
               </div>
               <footer align="center">
                   <copyright:myCopyright/>

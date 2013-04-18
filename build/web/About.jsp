@@ -20,7 +20,9 @@
                    <a href="./Register.jsp" class="navbar-link">   Register</a>
                 </p>
                 <ul class="nav">
-                  <li><a href=".">首页</a></li>
+                  <li><a href=".">首页</a></li> 
+                  <li><a href="./Cart.jsp">我的小车</a></li>
+                  <li><a href="./Bill.jsp">历史订单</a></li>
                   <li  class="active"><a href="./About.jsp">关于我们</a></li>
                 </ul>
               </div>
@@ -35,8 +37,9 @@
           <p>有人说爱情需要点点滴滴的积累，有人说爱情需要默默无闻的付出，但是恋爱时更需要轰轰烈烈的大声说出来。</p>
           <p>  在这里，我们希望能够为您提供最佳的恋爱解决方案。</p>
       </div>
-      <hr>
+      
       <footer class="copyright" align="center">
+          <hr align="center" color="#ADADAD" SIZE=3>
                   <copyright:myCopyright/>
               </footer>
     </body>

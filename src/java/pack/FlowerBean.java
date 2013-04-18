@@ -6,6 +6,7 @@ import java.beans.*;
 import java.sql.*;
 import java.util.*;
 import java.io.Serializable;
+import pack.Order;
 
 
 public class FlowerBean extends Object implements Serializable {
@@ -17,16 +18,20 @@ public class FlowerBean extends Object implements Serializable {
     private PropertyChangeSupport propertySupport;
     public ArrayList result;
     
-    public int StoreBill(int id){
+    public int StoreBill(String id,String receiver,String address,String tel){
         int result=0;
         try{
             String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"; 
             String url = "jdbc:sqlserver://localhost:1433; DatabaseName=Shopping";
             Class.forName(driverName);
             Connection con=DriverManager.getConnection(url,"sa","123456");
-            String strsql="insert into orders(product_id) values(?)";
+            //String strsql="insert into orders(product_id) values(?)";
+             String strsql="insert into orders(order_product_id,order_receiver,order_address,order_tel) values(?,?,?,?)";
             PreparedStatement stat=con.prepareStatement(strsql);
-            stat.setInt(1,id);
+            stat.setString(1,id);
+            stat.setString(2,receiver);
+            stat.setString(3,address);
+            stat.setString(4,tel);
             result = stat.executeUpdate();     
         }
         catch(Exception e){
@@ -36,8 +41,8 @@ public class FlowerBean extends Object implements Serializable {
       
     }
     
-    public ArrayList FindProductById(int id){
-        result=new ArrayList();
+    public Product FindProductById(int id){
+        Product flower=null;
         try{
             String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"; 
             String url = "jdbc:sqlserver://localhost:1433; DatabaseName=Shopping";
@@ -48,19 +53,20 @@ public class FlowerBean extends Object implements Serializable {
             ResultSet rs=stat.executeQuery();
             
             while(rs.next()){
-                Product flower=new Product();              
+                flower=new Product();              
                 flower.setId(id);
                 flower.setName(rs.getString("product_name"));
                 flower.setPrice(rs.getFloat("product_price"));
                 flower.setDescribe(rs.getString("product_describe"));
                 flower.setSales(rs.getInt("product_sales"));
-                result.add(flower);
             }
+            stat.close();
+            con.close();
         }
         catch(Exception e){
             e.printStackTrace();
         }
-        return result;
+        return flower;
     }
     
     

@@ -8,6 +8,21 @@ public class Product {
     private float price;
     private String name,describe;
     
+    public Product(){
+        id=0;
+        sales=0;
+        price=0;
+        name=null;
+        describe=null;
+    }
+    
+    public Product(int id,String name,float price,String describe,int sales){
+        this.id=id;
+        this.name=name;
+        this.price=price;
+        this.describe=describe;
+        this.sales=sales;
+    }
 
     public int getId() {
         return id;
@@ -48,5 +63,14 @@ public class Product {
     public void setDescribe(String describe) {
         this.describe = describe;
     }
+    
+    public boolean compareTo(Object m) {  
+        Product n= (Product) m;
+        if(id==n.id){
+            return true;
+        }else{
+            return false;
+        }
+    }  
     
 }

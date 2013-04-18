@@ -1,6 +1,7 @@
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
+<%@ page import="java.sql.*" %>
 <%@ page import="pack.FlowerBean" %>
 <%@ page import="pack.Product" %>
 <%@ taglib uri="/WEB-INF/tlds/myCopyright.tld" prefix="copyright" %>
@@ -27,9 +28,10 @@
                    <a href="./Register.jsp" class="navbar-link">   Register</a>
                 </p>
                 <ul class="nav">
-                  <li><a href=".">首页</a></li>
+                  <li><a href=".">首页</a></li>                  
+                  <li  class="active"><a href="./Cart.jsp">我的小车</a></li>
+                  <li><a href="./Bill.jsp">历史订单</a></li>
                   <li><a href="./About.jsp">关于我们</a></li>
-                  <li  class="active"><a href="./Cart.jsp">我的购物车</a></li>
                 </ul>
               </div>
             </div>
@@ -39,21 +41,29 @@
          <div class=container>
          <div class="span9">                         
               <%
-                int id=Integer.parseInt(request.getParameter("id"));
-                ArrayList flowers=flower.FindProductById(id);
-                Iterator iter=flowers.iterator();
-                while(iter.hasNext())
-                {
-                    Product p=(Product)iter.next();
-                      %>
+                     ArrayList carts=(ArrayList)session.getAttribute("car");
+                     float totalprice=0;
+                     String id="";
+                     if(carts==null){
+                           out.println("<h4 align='center'>Sorry,您还未选购任何产品哦~~</h4>");
+                     }
+                    else{
+                        
+                        Iterator iter=carts.iterator();                   
+                         while(iter.hasNext())
+                         {
+                               Product p=(Product)iter.next();
+                                id=id.concat(p.getId()+",");
+                                 session.setAttribute("order_product_id",id);
+                                %>
                               <div class="row-fluid">
                                   <div class="span12">
-                                      <h3>我的小车</h3>
-                                      <hr width="100%" color=#987cb9 SIZE=3>
+                                      <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=1)" width="100%" color=#987cb9 SIZE=3>
                                       <div class="span3">
                                           <img class="img-rounded" src="images/molihua.jpg" width="350" height="350"> 
                                       </div>
                                       <div class="span4">
+
                                             <h2><%=p.getName()%></h2>
                                             <h6><%=p.getDescribe()%></h6>
                                             <h6>销量：<%=p.getSales()%> 价格：<%=p.getPrice()%></h6>
@@ -62,31 +72,50 @@
                                           <br><br><br>
                                           <div class="input-prepend input-append">
                                               <span class="add-on">数量：</span>
-                                              <input type="text" class="span3" value="1">
+                                              <input type="text" class="span3" value="1" name="count">
                                               <span class="add-on">个</span>
-                                            </div>
-                                          
-                                           </div>
-                                          <div class="span1">
-                                              <br><br><br>
-                                              <input class="btn btn-info" value="确认购买" type="button" onclick="{window.location.href='Bill.jsp?id=<%=p.getId()%>'}">
-                                          </div>
-                                     
+                                          </div>                                          
+                                      </div>
+                                      <div class="span1">
+                                          <br>
+                                          <br>
+                                          <br>
+                                           <input class="btn btn-info" value="delete" type="button" onclick="{window.location.href='removeGoods.jsp?id=<%=p.getId()%>&name=<%=p.getName()%>&price=<%=p.getPrice()%>&describe=<%=p.getDescribe()%>&sales=<%=p.getSales()%>'}">
+                                      </div>
                                   </div>
                                   
                               </div>
                               <%
-                         }    
-                                                 
-                      %>
+                              totalprice+=p.getPrice();
+                             
+                          }
+                          
+                          %>
+                            <div class="row-fluid">
+                               <hr size="3" color="#ADADAD"> 
+                                <div class="pull-right">
+                                    <input class="btn btn-danger pull-right" value="确认购买" type="button" onclick="{window.location.href='OrderInfo.jsp'}">                                   
+                                </div>
+                                <script>
+                                   
+                                </script>
+                              <div class="pull-right">
+                                  <h4>总价：<span class="label label-important"><%= totalprice%></span> ￥&nbsp;&nbsp;&nbsp;</h4>
+                              </div>
+                           </div>
+                          <%
+                       
+                      }
+                      
+               %>
+               
                       
                       
-                      <footer align="center">
-                          <hr size="3" color="#ADADAD" width="">
-                          <copyright:myCopyright/>
-                      </footer>
-                 </div>
-                 
+             <footer align="center">
+               <hr size="3" color="#ADADAD" width="">
+               <copyright:myCopyright/>
+            </footer>
+          </div>                
         </div>
     </body>
 </html>
