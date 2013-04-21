@@ -35,66 +35,44 @@
         </div>
         
         <br><br> <br>
-        <div class="container-fluid">    
-            <div class="row-fluid">
-                <div class="span3 site">
-                    <div class="well sidebar-nav">
-                        <ul class="nav nav-list">
-                            <li class="nav-header">点滴幸福</li>
-                            <li class="active"><a href="./flowers.jsp">鲜花</a></li>
-                            <li><a href="#">饰品</a></li>
-                            <li class="nav-header">惊喜瞬间</li>
-                            <li><a href="#">创意礼品</a></li>
-                            <li><a href="#">自制礼品</a></li>
-                            <li class="nav-header">Big趴体</li>
-                            <li><a href="#">生日趴</a></li>
-                            <li><a href="#">聚会趴</a></li>
-                            <li><a href="#">旅游趴</a></li>
-                        </ul>
+        <div class="container">    
+            
+            <div class="span12">                     
+                <div class="hero-flower">                        
+                    <div class="item">
+                        <marquee>恋爱ing，爱的玫瑰火热传递中……</marquee>
                     </div>
-                </div>                       
-                <div class="span9">                     
-                    <div class="hero-flower">                        
-                        <div class="item">
-                            <marquee>恋爱ing，爱的玫瑰火热传递中……</marquee>
-                        </div>
-                    </div>                                                                             
-                    <%
-                    ArrayList flowers=flower.GetFlowerData();
-                    Iterator iter=flowers.iterator();
-                    while(iter.hasNext()) {
-                        Product p=(Product)iter.next();
-                    %>
-                    <div class="row-fluid">
-                        <div class="span8">
-                            <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=1)" width="80%" color=#987cb9 SIZE=3>
-                            <div class="span3">
-                                <img class="img-rounded" src="images/molihua.jpg" width="350" height="350"> 
-                            </div>
-                            <div class="span4">
-                                
-                                <h2><%=p.getName()%></h2>
-                                <h6><%=p.getDescribe()%></h6>
-                                <h6>销量：<%=p.getSales()%> 价格：<%=p.getPrice()%></h6>
-                            </div>
-                            <div class="span1">
-                                <br>
-                                <br>
-                                <input class="btn btn-info" value="加入小车" type="button" onclick="{window.location.href='MyCar.jsp?id=<%=p.getId()%>&name=<%=p.getName()%>&price=<%=p.getPrice()%>&describe=<%=p.getDescribe()%>&sales=<%=p.getSales()%>'}">
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                    <%
-                    }                        
-                    %>
-                     <hr size="3" width="80%" color="#ADADAD">
-                </div>
-                
+                </div> 
             </div>
-                        
-            <footer class="copyright" align="center">              
+            
+            <div class="span12">     
+                <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=1)" width="100%" color=#987cb9 SIZE=3>
+                <%
+                ArrayList flowers=flower.GetFlowerData();
+                Iterator iter=flowers.iterator();
+                while(iter.hasNext()) {
+                    Product p=(Product)iter.next();
+                %>
+                
+                <div class="spanf">
+                    <img class="img-rounded" src="images/molihua.jpg" width="200" height="200"> 
+                    
+                    <h5><%=p.getName()%></h5>
+                    <h6><%=p.getDescribe()%></h6>
+                    <h6>销量：<%=p.getSales()%> 价格：<%=p.getPrice()%></h6>
+                    
+                    <input class="btn btn-info" value="加入小车" type="button" onclick="{window.location.href='MyCar.jsp?id=<%=p.getId()%>&name=<%=p.getName()%>&price=<%=p.getPrice()%>&describe=<%=p.getDescribe()%>&sales=<%=p.getSales()%>'}">
+                </div>                                                              
+                
+                <%
+                }                        
+                %>   
+                <br>
+                <hr size="3" width="100%" color="#ADADAD">
+            </div>
+            
+            <footer class="copyright" align="center"> 
+                
                 <copyright:myCopyright/>
             </footer>
         </div> 

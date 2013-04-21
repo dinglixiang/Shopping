@@ -18,6 +18,28 @@ public class FlowerBean extends Object implements Serializable {
     private PropertyChangeSupport propertySupport;
     public ArrayList result;
     
+    public int StoreProduct(String name,float price,String describe,int sales){
+         int result=0;
+        try{
+            String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"; 
+            String url = "jdbc:sqlserver://localhost:1433; DatabaseName=Shopping";
+            Class.forName(driverName);
+            Connection con=DriverManager.getConnection(url,"sa","123456");
+            //String strsql="insert into orders(product_id) values(?)";
+             String strsql="insert into products(product_name,product_price,product_describe,product_sales) values(?,?,?,?)";
+            PreparedStatement stat=con.prepareStatement(strsql);
+            stat.setString(1,name);
+            stat.setFloat(2,price);
+            stat.setString(3,describe);
+            stat.setInt(4,sales);
+            result = stat.executeUpdate();     
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
     public int StoreBill(String id,String receiver,String address,String tel){
         int result=0;
         try{

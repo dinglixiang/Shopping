@@ -1,6 +1,10 @@
 .site{
     width: 324px;
 }
+.spanf{
+    margin-top: 15px;
+    width: 215px;
+}
 
 .span1 img:hover{
     backgroun-color:balck;
