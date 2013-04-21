@@ -28,6 +28,7 @@
                         for(int i=0;i<ids.length;i++){
                             
                             Product p=product.FindProductById(Integer.parseInt(ids[i]));
+                            product.UpdateSalesById(Integer.parseInt(ids[i]),p.getSales());
                     
                     %>                         
                     <div class="span5">
