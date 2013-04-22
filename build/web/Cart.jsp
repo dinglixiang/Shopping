@@ -64,8 +64,7 @@
                                       </div>
                                       <div class="span4">
 
-                                            <h2><%=p.getName()%></h2>
-                                            <h6><%=p.getDescribe()%></h6>
+                                            <h4><a href="FlowerDetails.jsp?id=<%= p.getId()%>"><%=p.getName()%></a></h4>
                                             <h6>销量：<%=p.getSales()%> 价格：<%=p.getPrice()%></h6>
                                       </div>
                                       <div class="span3">
@@ -80,7 +79,7 @@
                                           <br>
                                           <br>
                                           <br>
-                                           <input class="btn btn-info" value="delete" type="button" onclick="{window.location.href='removeGoods.jsp?id=<%=p.getId()%>&name=<%=p.getName()%>&price=<%=p.getPrice()%>&describe=<%=p.getDescribe()%>&sales=<%=p.getSales()%>'}">
+                                           <input class="btn btn-info" value="delete" type="button" onclick="{window.location.href='removeGoods.jsp?id=<%=p.getId()%>'}">
                                       </div>
                                   </div>
                                   

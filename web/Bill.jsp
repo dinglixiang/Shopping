@@ -72,8 +72,7 @@
                                 
                                 <%=p.getName()%>                                
                                 <%=p.getDescribe()%>
-                                <br>
-                                
+                                <br>                               
                                 <%  
                                 }
                                 %>

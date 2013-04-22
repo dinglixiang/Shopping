@@ -13,14 +13,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>删除购物车商品</title>
+        <jsp:useBean id="flower" scope="application" class="pack.FlowerBean"/>
     </head>
     <body>
         <%
         int id=Integer.parseInt(request.getParameter("id"));
-       String name=request.getParameter("name");
-       int sales=Integer.parseInt(request.getParameter("sales"));
-       String describe=request.getParameter("describe");
-       float price=Float.parseFloat(request.getParameter("price"));
+       Product tmp=flower.FindProductById(id);  
+       String name=tmp.getName();
+       int sales=tmp.getSales();
+       String describe=tmp.getDescribe();
+       float price=tmp.getPrice();
            
        Product goods=new Product(id,name,price,describe,sales);
         ArrayList products=(ArrayList)session.getAttribute("car");

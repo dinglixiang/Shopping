@@ -38,8 +38,7 @@
                         </div>
                         <div class="span4">
                             
-                            <h2><%=p.getName()%></h2>
-                            <h6><%=p.getDescribe()%></h6>
+                            <h4><a href="FlowerDetails.jsp?id=<%= p.getId()%>"><%=p.getName()%></a></h4>
                             <h6>销量：<%=p.getSales()%> 价格：<%=p.getPrice()%></h6>
                         </div>
                     </div>               

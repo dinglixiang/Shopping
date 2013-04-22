@@ -57,10 +57,9 @@
                 <div class="spanf">
                     <img class="img-rounded" src="images/molihua.jpg" width="200" height="200"> 
                     <h5><a href="FlowerDetails.jsp?id=<%= p.getId()%>"><%=p.getName()%></a></h5>
-                    <h6><%=p.getDescribe()%></h6>
                     <h6>销量：<span class="badge badge-info"><%=p.getSales()%> </span>&nbsp;&nbsp;&nbsp;价格：<%=p.getPrice()%>￥</h6>
                     
-                    <input class="btn btn-info" value="加入小车" type="button" onclick="{window.location.href='MyCar.jsp?id=<%=p.getId()%>&name=<%=p.getName()%>&price=<%=p.getPrice()%>&describe=<%=p.getDescribe()%>&sales=<%=p.getSales()%>'}">
+                    <input class="btn btn-info" value="加入小车" type="button" onclick="{window.location.href='MyCar.jsp?id=<%=p.getId()%>'}">
                 </div>                                                              
                 
                 <%
