@@ -1,42 +1,48 @@
-<%@page contentType="text/html"%>
-<%@page pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="ck" uri="http://ckeditor.com"%>
+<%
+    request.setCharacterEncoding("GBK");
+    response.setCharacterEncoding("GBK");
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
+        <base href="<%=basePath%>">
         <meta http-equiv="Content-Type" content="text/html; charset=GBK">
-        <title>新建产品</title>
+        <title>鏂板缓浜у搧</title>
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="ckeditor/contents.css">
     </head>
-    <body> 
-        <br> 
-        <br> 
-        <br> 
-        <form align="center" method="post" action="StoreProduct.jsp">
-            <tr>
-                <div class="input-prepend">
-                  <span class="add-on">产品名称</span>
-                  <input type="text" name="name" />
-                </div>
+    
+    <body>
+        <div class="container">
+            <form method="post" action="StoreProduct.jsp">
+                <h4>
+                    浜у搧鍚嶇О
+                    <input type="text" name="name"/>
+                </h4>
+
+                <h4>
+                    浜у搧浠锋牸
+                    <input type="text" name="price" />
+                </h4>
+
+                <h4>
+                    浜у搧閿�閲�
+                    <input type="text" name="sales" value=0  disabled=true />
+                </h4>
+
+                <h4>
+                浜у搧鎻忚堪</h4>
+                <textarea rows="10" cols="10" id="describe" name="describe"></textarea>
+                
                 <br>
-                <div class="input-prepend">
-                  <span class="add-on">产品价格</span>
-                  <input type="text" name="price" />
-                </div>
-                <br>
-                <div class="input-prepend">
-                  <span class="add-on">产品销量</span>
-                  <input type="text" name="sales" value=0  disabled=true/>
-                </div>
-                <br>
-                <div class="input-prepend">
-                  <span class="add-on">产品描述</span>
-                  <input type="text" name="describe" />
-                </div>
-                <br>
-            <tr><input class="btn btn-sure btn-primary" type="submit" value="新建"/></tr> 
-        </form>
+                <tr><input class="btn btn-sure btn-primary" type="submit" value="鏂板缓"/></tr> 
+            </form>
+        </div>
+        <ck:replace replace="describe" basePath="ckeditor"></ck:replace>
     </body>
 </html>

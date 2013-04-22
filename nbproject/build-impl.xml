@@ -396,14 +396,26 @@
     <target name="library-inclusion-in-manifest" depends="init" if="dist.ear.dir">
         <basename property="included.lib.file.reference.sqljdbc.jar-1" file="${file.reference.sqljdbc.jar-1}"/>
         <copy-ear-war file="${file.reference.sqljdbc.jar-1}" propname="included.lib.file.reference.sqljdbc.jar-1.X"/>
+        <basename property="included.lib.file.reference.ckeditor-java-core-3.5.3.jar-1" file="${file.reference.ckeditor-java-core-3.5.3.jar-1}"/>
+        <copy-ear-war file="${file.reference.ckeditor-java-core-3.5.3.jar-1}" propname="included.lib.file.reference.ckeditor-java-core-3.5.3.jar-1.X"/>
+        <basename property="included.lib.file.reference.ckeditor-java-core-3.5.3-javadoc.jar" file="${file.reference.ckeditor-java-core-3.5.3-javadoc.jar}"/>
+        <copy-ear-war file="${file.reference.ckeditor-java-core-3.5.3-javadoc.jar}" propname="included.lib.file.reference.ckeditor-java-core-3.5.3-javadoc.jar.X"/>
+        <basename property="included.lib.file.reference.ckeditor-java-core-3.5.3.jar-2" file="${file.reference.ckeditor-java-core-3.5.3.jar-2}"/>
+        <copy-ear-war file="${file.reference.ckeditor-java-core-3.5.3.jar-2}" propname="included.lib.file.reference.ckeditor-java-core-3.5.3.jar-2.X"/>
+        <basename property="included.lib.file.reference.ckeditor-java-core-3.5.3-sources.jar" file="${file.reference.ckeditor-java-core-3.5.3-sources.jar}"/>
+        <copy-ear-war file="${file.reference.ckeditor-java-core-3.5.3-sources.jar}" propname="included.lib.file.reference.ckeditor-java-core-3.5.3-sources.jar.X"/>
         <mkdir dir="${build.web.dir.real}/META-INF"/>
         <manifest file="${build.web.dir.real}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Class-Path" value="${included.lib.file.reference.sqljdbc.jar-1} "/>
+            <attribute name="Class-Path" value="${included.lib.file.reference.sqljdbc.jar-1} ${included.lib.file.reference.ckeditor-java-core-3.5.3.jar-1} ${included.lib.file.reference.ckeditor-java-core-3.5.3-javadoc.jar} ${included.lib.file.reference.ckeditor-java-core-3.5.3.jar-2} ${included.lib.file.reference.ckeditor-java-core-3.5.3-sources.jar} "/>
         </manifest>
         <delete dir="${dist.ear.dir}/temp"/>
     </target>
     <target name="library-inclusion-in-archive" depends="init" unless="dist.ear.dir">
         <copy file="${file.reference.sqljdbc.jar-1}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.ckeditor-java-core-3.5.3.jar-1}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.ckeditor-java-core-3.5.3-javadoc.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.ckeditor-java-core-3.5.3.jar-2}" todir="${build.web.dir.real}/WEB-INF/lib"/>
+        <copy file="${file.reference.ckeditor-java-core-3.5.3-sources.jar}" todir="${build.web.dir.real}/WEB-INF/lib"/>
     </target>
     <target name="do-ear-dist" depends="init,compile,compile-jsps,-pre-dist,library-inclusion-in-manifest">
         <dirname property="dist.jar.dir" file="${dist.ear.war}"/>
