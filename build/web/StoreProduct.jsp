@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>保存产品信息</title>
          <jsp:useBean id="flower" scope="application" class="pack.FlowerBean"/>
     </head>
     <body>

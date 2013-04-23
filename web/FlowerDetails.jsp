@@ -19,7 +19,7 @@
         
         <script type="text/javascript" src="jquery-1.4.1.js"></script>
         <style type="text/css">
-        .go{width:47px;height:65px;position:fixed;_position:absolute;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||200)-(parseInt(this.currentStyle.marginBottom,10)||0)));right:20px;bottom:10%; background-color: lightgoldenrodyellow; background-repeat:no-repeat;}
+        .go{width:47px;height:65px;position:fixed;_position:absolute;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||200)-(parseInt(this.currentStyle.marginBottom,10)||0)));right:20px;bottom:30%; background-color: lightgoldenrodyellow; background-repeat:no-repeat;}
         .go a{text-indent:999em;width:37px;margin:5px;border:0;overflow:hidden;float:left; cursor:pointer;}
         .go .top{background-position:0 0px;height:22px;background-image: url(./images/a.jpg);}
         .go .feedback{background-position:0 -22px;height:32px}
@@ -80,7 +80,7 @@
                         <img class="img-rounded" src="images/molihua.jpg" width="200" height="200"> 
                     </div>
                     <div class="span7">
-                        产品名称 <%= p.getName()%><br><br>
+                        <h4><%= p.getName()%></h4> <br><br>
                         
                         产品价格 <%= p.getPrice()%><br><br>
                         产品销量 <%= p.getSales()%><br><br>

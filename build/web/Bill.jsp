@@ -68,10 +68,8 @@
                                 for(int i=0;i<ids.length-1;i++){
                                     Product p=flower.FindProductById(Integer.parseInt(ids[i]));                  
                                 %>                                  
-                                
-                                
-                                <%=p.getName()%>                                
-                                <%=p.getDescribe()%>
+                                                                
+                                 <%= p.getName()%>
                                 <br>                               
                                 <%  
                                 }

@@ -19,7 +19,8 @@
             String address=request.getParameter("address");
             String tel=request.getParameter("tel");           
             int flag=flower.StoreBill(product_id,receiver,address,tel);
-            response.sendRedirect("Bill.jsp");
+           // response.sendRedirect("Bill.jsp");
+            request.getRequestDispatcher("Bill.jsp").forward(request,response);
      %>
     </body>
 </html>

@@ -40,7 +40,7 @@
                 <textarea rows="10" cols="10" id="describe" name="describe"></textarea>
                 
                 <br>
-                <tr><input class="btn btn-sure btn-primary" type="submit" value="新建"/></tr> 
+                <tr><input class="btn btn-sure btn-primary" type="submit" value="新建产品"/></tr> 
             </form>
         </div>
         <ck:replace replace="describe" basePath="ckeditor"></ck:replace>

@@ -50,7 +50,7 @@
                     }
                     %>
                     <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=1)" width="100%" color=#987cb9 SIZE=3>
-                    <form align="center" action="StoreBills.jsp">
+                    <form align="center" action="StoreBills.jsp" method="post">
                         <h3>订单信息表</h3>
                         <th>收件人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th><td><input type="text" name="receiver"/></td><br>
                         <th>送货地址&nbsp;&nbsp;</th><td><input type="text" name="address"/></td><br>

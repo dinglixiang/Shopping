@@ -18,9 +18,47 @@ public class FlowerBean extends Object implements Serializable {
     private PropertyChangeSupport propertySupport;
     public ArrayList result;
     
+    public void DeleteProduct(int id){
+        try{
+            String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"; 
+            String url = "jdbc:sqlserver://localhost:1433; DatabaseName=Shopping";
+            Class.forName(driverName);
+            Connection con=DriverManager.getConnection(url,"sa","123456");
+            String strsql="delete from products where product_id = "+id;
+            PreparedStatement stat=con.prepareStatement(strsql);
+            stat.executeUpdate();
+            
+            stat.close();
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void UpdateProduct(int id,String name,float price,String describe,int sales){
+        try{
+            String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"; 
+            String url = "jdbc:sqlserver://localhost:1433; DatabaseName=Shopping";
+            Class.forName(driverName);
+            Connection con=DriverManager.getConnection(url,"sa","123456");
+            String strsql="update products set product_name=?,product_price=?,product_describe=?,product_sales=?  WHERE product_id = "+id;
+            PreparedStatement stat=con.prepareStatement(strsql);
+            stat.setString(1,name);
+            stat.setFloat(2,price);
+            stat.setString(3,describe);
+            stat.setInt(4,sales);
+            stat.executeUpdate();
+            
+            stat.close();
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     
     public void UpdateSalesById(int id,int sales){
-        Product flower=null;
         try{
             String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"; 
             String url = "jdbc:sqlserver://localhost:1433; DatabaseName=Shopping";

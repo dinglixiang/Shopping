@@ -27,6 +27,7 @@
                             <li><a href=".">首页</a></li>                  
                             <li><a href="./Cart.jsp">我的小车</a></li>
                             <li><a href="./Bill.jsp">历史订单</a></li>
+                            <li><a href="./AdminProducts.jsp">产品管理</a></li>
                             <li><a href="./About.jsp">关于我们</a></li>
                         </ul>
                     </div>
