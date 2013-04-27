@@ -14,13 +14,13 @@
     </head>
     <body>
     <%
-            String product_id=(String)session.getAttribute("order_product_id");
+            String product_name=(String)session.getAttribute("order_product_name");
             String receiver=request.getParameter("receiver");
             String address=request.getParameter("address");
             String tel=request.getParameter("tel");           
-            int flag=flower.StoreBill(product_id,receiver,address,tel);
+            int flag=flower.StoreBill(product_name,receiver,address,tel);
            // response.sendRedirect("Bill.jsp");
-            request.getRequestDispatcher("Bill.jsp").forward(request,response);
+            request.getRequestDispatcher("SuccessPage.jsp?message=付款成功").forward(request,response);
      %>
     </body>
 </html>

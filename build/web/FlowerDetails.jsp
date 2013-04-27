@@ -3,6 +3,8 @@
 <%@ page import="java.util.*" %>
 <%@ page import="pack.FlowerBean" %>
 <%@ page import="pack.Product" %>
+<%@ page import="pack.LoginBean" %>
+<%@ taglib uri="/WEB-INF/tlds/myCopyright.tld" prefix="copyright" %>
 <jsp:useBean id="product" scope="application" class="pack.FlowerBean"/>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -54,16 +56,35 @@
                 <div class="container-fluid">
                     <a class="brand" href=".">恋爱ing</a>
                     <div class="nav-collapse collapse">
-                        <p class="navbar-text pull-right">
-                            <a href="./Login.jsp" class="navbar-link">Login in</a>
+                        <% 
+                            LoginBean user=(LoginBean)session.getAttribute("user");
+                            if(user!=null){
+                                %>
+                                <p class="navbar-text pull-right">
+                                    ${user.email}
+                                    <a href="./Exit.jsp" class="navbar-link">退出</a>
+                                </p>  
+                                    <ul class="nav">
+                                      <li  class="active"><a href=".">首页</a></li>                 
+                                      <li><a href="./Cart.jsp">我的小车</a></li>
+                                      <li><a href="./About.jsp">关于我们</a></li>
+
+                                    </ul>
+                                <%
+                            }
+                            else{
+                            %>
+                            <p class="navbar-text pull-right">
+                            <a href="./Login.jsp" class="navbar-link">Login in </a>
                             <a href="./Register.jsp" class="navbar-link">   Register</a>
-                        </p>
-                        <ul class="nav">
-                            <li><a href=".">首页</a></li>                  
-                            <li><a href="./Cart.jsp">我的小车</a></li>
-                            <li><a href="./Bill.jsp">历史订单</a></li>
-                            <li><a href="./About.jsp">关于我们</a></li>
-                        </ul>
+                            </p> 
+                            <ul class="nav">
+                                      <li  class="active"><a href=".">首页</a></li>                 
+                                      <li><a href="./About.jsp">关于我们</a></li>
+                             </ul>
+                            <%
+                            }
+                        %>
                     </div>
                 </div>
             </div>
@@ -82,8 +103,8 @@
                     <div class="span7">
                         <h4><%= p.getName()%></h4> <br><br>
                         
-                        产品价格 <%= p.getPrice()%><br><br>
-                        产品销量 <%= p.getSales()%><br><br>
+                        产品价格: <%= p.getPrice()%><br><br>
+                        产品销量: <%= p.getSales()%><br><br>
                     </div>     
                 </div>                                             
             </div>
@@ -95,6 +116,12 @@
                 </div>  
             </div>
             
+            <hr width="100%" color="#ADADAD" SIZE=3>
+            <footer align="center">
+                <%
+                out.println("<B>@ Copyright 2013 dinglixiang .<a href='http://dinglixiang.github.io'>我的blog</a></B>");
+                %>
+            </footer>
         </div>
 
     <div class="go">
@@ -102,6 +129,7 @@
 
 	<a title="返回底部" class="bottom" ></a>
 
-    </div>       
+    </div>  
+    
     </body>
 </html>

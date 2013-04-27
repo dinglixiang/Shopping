@@ -4,6 +4,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="pack.FlowerBean" %>
 <%@ page import="pack.Product" %>
+<%@ page import="pack.LoginBean" %>
 <%@ taglib uri="/WEB-INF/tlds/myCopyright.tld" prefix="copyright" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -23,27 +24,50 @@
             <div class="container-fluid">
               <a class="brand" href=".">恋爱ing</a>
               <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">
-                   <a href="./Login.jsp" class="navbar-link">Login in </a>
-                   <a href="./Register.jsp" class="navbar-link">   Register</a>
-                </p>
-                <ul class="nav">
-                  <li><a href=".">首页</a></li>                  
-                  <li  class="active"><a href="./Cart.jsp">我的小车</a></li>
-                  <li><a href="./Bill.jsp">历史订单</a></li>
-                  <li><a href="./About.jsp">关于我们</a></li>
-                </ul>
+                 <% 
+                            LoginBean user=(LoginBean)session.getAttribute("user");
+                            if(user!=null){
+                                %>
+                                <p class="navbar-text pull-right">
+                                    <span class="label label-important">${user.email}</span> 
+                                    <a href="./Exit.jsp" class="navbar-link">退出</a>
+                                </p>  
+                                    <ul class="nav">
+                                      <li><a href=".">首页</a></li>                 
+                                      <li  class="active"><a href="./Cart.jsp">我的小车</a></li>
+                                      <li><a href="./About.jsp">关于我们</a></li>
+
+                                    </ul>
+                                <%
+                            }
+                            else{
+                                response.sendRedirect("Login.jsp");
+                            %>
+                            <p class="navbar-text pull-right">
+                            <a href="./Login.jsp" class="navbar-link">Login in </a>
+                            <a href="./Register.jsp" class="navbar-link">   Register</a>
+                            </p> 
+                            <ul class="nav">
+                                      <li  class="active"><a href=".">首页</a></li>                 
+                                      <li><a href="./About.jsp">关于我们</a></li>
+                             </ul>
+                            <%
+                            }
+                %>
               </div>
             </div>
           </div>
       </div>
   <br><br> <br>
          <div class=container>
-         <div class="span9">                         
+         <div class="span9"> 
+             
+             
               <%
                      ArrayList carts=(ArrayList)session.getAttribute("car");
                      float totalprice=0;
-                     String id="";
+                     String name="";
+                     
                      if(carts==null){
                            out.println("<h4 align='center'>Sorry,您还未选购任何产品哦~~</h4>");
                      }
@@ -52,9 +76,13 @@
                         Iterator iter=carts.iterator();                   
                          while(iter.hasNext())
                          {
+                              
                                Product p=(Product)iter.next();
-                                id=id.concat(p.getId()+",");
-                                 session.setAttribute("order_product_id",id);
+                                name=name.concat(p.getName()+",");
+                                 session.setAttribute("order_product_name",name);
+                                 String count=(String)session.getAttribute("count"+(p.getId()));
+                                 
+                                 int cnt=Integer.parseInt(count);
                                 %>
                               <div class="row-fluid">
                                   <div class="span12">
@@ -70,8 +98,12 @@
                                       <div class="span3">
                                           <br><br><br>
                                           <div class="input-prepend input-append">
-                                              <span class="add-on">数量：</span>
-                                              <input type="text" class="span3" value="1" name="count">
+                                              <!--<input type="button" class="btn" value="-">
+                                               <input type="text" class="span3" value="" id="count">
+                                               <input type="button"  class="btn" value="+"> -->
+                                               
+                                             <span class="add-on">数量：</span>
+                                              <input type="text" class="span3 disabled" readonly value="<%= count%>" name="count">
                                               <span class="add-on">个</span>
                                           </div>                                          
                                       </div>
@@ -85,8 +117,7 @@
                                   
                               </div>
                               <%
-                              totalprice+=p.getPrice();
-                             
+                              totalprice+=cnt*(p.getPrice());                             
                           }
                           
                           %>

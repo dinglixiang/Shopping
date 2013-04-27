@@ -26,4 +26,12 @@
             index.jsp
         </welcome-file>
     </welcome-file-list>
+    <context-param>
+        <param-name>email</param-name>
+        <param-value>admin@gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>123</param-value>
+    </context-param>
 </web-app>

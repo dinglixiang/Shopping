@@ -21,7 +21,7 @@
         int sales=0;
         String describe=request.getParameter("describe");
         int flag=flower.StoreProduct(name,price,describe,sales);
-        response.sendRedirect("flowers.jsp");
+        response.sendRedirect("AdminProducts.jsp");
         %>
     </body>
 </html>

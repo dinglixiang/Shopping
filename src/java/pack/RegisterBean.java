@@ -1,8 +1,3 @@
-/*
- * RegisterBean.java
- *
- * Created on April 15, 2013, 12:39 PM
- */
 
 package pack;
 
@@ -11,9 +6,6 @@ import java.beans.*;
 import java.util.*;
 import java.io.Serializable;
 
-/**
- * @author B413
- */
 public class RegisterBean extends Object implements Serializable {
     
     public static final String PROP_SAMPLE_PROPERTY = "sampleProperty";   

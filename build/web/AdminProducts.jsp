@@ -19,21 +19,33 @@
         <jsp:useBean id="bill" scope="application" class="pack.BillBean"/>
     </head>
     <body>
+       
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
-                    <a class="brand" href=".">恋爱ing</a>
+                    <a class="brand" href="./AdminProducts.jsp">Admin | 恋爱ing</a>
                     <div class="nav-collapse collapse">
+                         
                         <p class="navbar-text pull-right">
-                            <a href="./Login.jsp" class="navbar-link">Login in </a>
-                            <a href="./Register.jsp" class="navbar-link">   Register</a>
+                            <%
+                            String email=(String)session.getAttribute("admin_e");
+                            if(email==null){
+                                response.sendRedirect("admin.jsp");
+                            }
+                            else{
+                        %>
+                        <span class="label label-important"> ${initParam.email}</span>
+                           <a href="./Exit.jsp" class="navbar-link">退出</a>
                         </p>
                         <ul class="nav">
-                            <li><a href=".">首页</a></li>                           
-                            <li><a href="./Cart.jsp">我的小车</a></li>
-                            <li><a href="./Bill.jsp">历史订单</a></li>
-                            <li><a href="./About.jsp">关于我们</a></li>
+                            <li><a href=".">首页</a></li>
+                            <li class="active"><a href="./AdminProducts.jsp">产品管理</a></li>
+                            <li><a href="./Bill.jsp">历史订单</a></li>                            
                         </ul>
+                         <form class="navbar-search pull-search" action="AdminSearch.jsp">                                
+                               <input type="text" class="search-query" name="condition">
+                               <button type="submit" class="btn" >搜索</button>
+                          </form>
                     </div>
                 </div>
             </div>
@@ -41,8 +53,9 @@
         <br><br> <br>
         
         <div class="container">
-            <h3>产品列表</h3>
-            <div class="row-fluid">
+            <h3>产品列表<a class="pull-right" href="./NewProduct.jsp"><h4>新建产品</h4></a></h3>
+                      
+            <div class="row-fluid">               
                 <div class="span12">
                     <br>
                     <table class="table table-hover">
@@ -79,7 +92,8 @@
                             </td>
                         </tr>                                                                                    
                         <%
-                        }           
+                        } 
+                        }
                         %>
                     </table>
                 </div>

@@ -8,6 +8,11 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+.pull-search{
+    margin-right: 150px;
+    float: right;
+}
+
 .clearfix {
   *zoom: 1;
 }
@@ -1792,6 +1797,7 @@ select:focus:invalid:focus {
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
           border-radius: 0;
+height: 30px;
 }
 
 .input-prepend.input-append input + .btn-group .btn,
@@ -4448,9 +4454,10 @@ input[type="submit"].btn.btn-mini {
   border-left: 1px solid #f2f2f2;
 }
 
+
 .navbar .btn,
 .navbar .btn-group {
-  margin-top: 5px;
+  margin-top: 0px;
 }
 
 .navbar .btn-group .btn,
@@ -4510,7 +4517,6 @@ input[type="submit"].btn.btn-mini {
 
 .navbar-search {
   position: relative;
-  float: left;
   margin-top: 5px;
   margin-bottom: 0;
 }

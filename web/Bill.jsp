@@ -22,17 +22,24 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
-                    <a class="brand" href=".">恋爱ing</a>
+                    <a class="brand" href="./AdminProducts.jsp">Admin | 恋爱ing</a>
                     <div class="nav-collapse collapse">
+                        <%
+                            String admin=(String)session.getAttribute("admin_e");
+                            if(admin==null){
+                                response.sendRedirect("admin.jsp");
+                            }
+                            else{
+                        %>
                         <p class="navbar-text pull-right">
-                            <a href="./Login.jsp" class="navbar-link">Login in </a>
-                            <a href="./Register.jsp" class="navbar-link">   Register</a>
+                            ${initParam.email}
+                           <a href="./Exit.jsp" class="navbar-link">退出</a>
                         </p>
                         <ul class="nav">
-                            <li><a href=".">首页</a></li>                           
-                            <li><a href="./Cart.jsp">我的小车</a></li>
-                            <li  class="active"><a href="./Bill.jsp">历史订单</a></li>
-                            <li><a href="./About.jsp">关于我们</a></li>
+                             <li><a href=".">首页</a></li>
+                            <li><a href="./AdminProducts.jsp">产品管理</a></li>
+                            <li class="active"><a href="./Bill.jsp">历史订单</a></li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -46,9 +53,10 @@
                     <br>
                     <table class="table table-hover">
                         <th width="10%">订单号</th>
-                        <th width="60%">订单商品</th>
+                        <th width="40%">订单商品</th>
                         <th width="10%">收件人</th>
                         <th width="20%">送货地址</th>
+                        <th width="20%">操作</th>
                         <%
                         ArrayList orders=bill.GetBills();
                         if(orders==null) {
@@ -58,18 +66,16 @@
                             Iterator oiter=orders.iterator();
                             while(oiter.hasNext()){
                                 Order o=(Order)oiter.next();
-                                String product_id=o.getProduct_id();
-                                String ids[]=product_id.split(",");
+                                String product_name=o.getProduct_name();
+                                String names[]=product_name.split(",");
                         %>                       
                         <tr>  
                             <td><%= o.getOrder_id()%></td>
                             <td>                                                                                                     
                                 <%
-                                for(int i=0;i<ids.length-1;i++){
-                                    Product p=flower.FindProductById(Integer.parseInt(ids[i]));                  
-                                %>                                  
-                                                                
-                                 <%= p.getName()%>
+                                for(int i=0;i<names.length;i++){                
+                                %>                                                                                                  
+                                 <%= (String)names[i]%>
                                 <br>                               
                                 <%  
                                 }
@@ -77,10 +83,12 @@
                             </td> 
                             <td><%= o.getReceiver()%></td>
                             <td><%= o.getAddress()%></td> 
+                            <td><h5><a href="DeleteBill.jsp?id=<%= o.getOrder_id()%>">删除</a></h5></td>
                         </tr> 
                         
                         <%
                             }
+                        }
                         }
                         %>
                     </table>

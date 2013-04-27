@@ -20,7 +20,7 @@ public class BillBean extends Object implements Serializable {
             String url = "jdbc:sqlserver://localhost:1433; DatabaseName=Shopping";
             Class.forName(driverName);
             Connection con=DriverManager.getConnection(url,"sa","123456");
-            String strsql="insert into orders(order_product_id,order_receiver,order_address,order_tel) values(?,?,?,?)";
+            String strsql="insert into orders(order_product_name,order_receiver,order_address,order_tel) values(?,?,?,?)";
             PreparedStatement stat=con.prepareStatement(strsql);
            // stat.setString(1,);
             //stat.setString(2,receiver);
@@ -32,7 +32,7 @@ public class BillBean extends Object implements Serializable {
             while(rs.next()){
                 Order order=new Order();
                 order.setOrder_id(rs.getInt("order_id"));
-                order.setProduct_id(rs.getString("product_id"));
+                order.setProduct_name(rs.getString("product_name"));
                 result.add(order);
             }
         }
@@ -41,6 +41,24 @@ public class BillBean extends Object implements Serializable {
         }
     }
     
+    
+    public void DeleteBill(int id){
+        try{
+            String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"; 
+            String url = "jdbc:sqlserver://localhost:1433; DatabaseName=Shopping";
+            Class.forName(driverName);
+            Connection con=DriverManager.getConnection(url,"sa","123456");
+            String strsql="delete from orders where order_id = "+id;
+            PreparedStatement stat=con.prepareStatement(strsql);
+            stat.executeUpdate();
+            
+            stat.close();
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
      public ArrayList GetBills(){
         result=new ArrayList();
          try{
@@ -55,7 +73,7 @@ public class BillBean extends Object implements Serializable {
             while(rs.next()){
                 Order order=new Order();
                 order.setOrder_id(rs.getInt("order_id"));
-                order.setProduct_id(rs.getString("order_product_id"));
+                order.setProduct_name(rs.getString("order_product_name"));
                 order.setAddress(rs.getString("order_address"));
                 order.setReceiver(rs.getString("order_receiver"));
                 order.setTel(rs.getString("order_tel"));

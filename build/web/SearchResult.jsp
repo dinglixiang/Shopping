@@ -13,8 +13,6 @@
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="flower.css" rel="stylesheet" type="text/css" />
         <jsp:useBean id="flower" scope="application" class="pack.FlowerBean"/>
-        
-        
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -23,13 +21,12 @@
                     <a class="brand" href=".">恋爱ing</a>
                     <div class="nav-collapse collapse">
                          <% 
-                            
                             LoginBean user=(LoginBean)session.getAttribute("user");
                             if(user!=null){
                                 %>
                                 
                                 <p class="navbar-text pull-right">
-                                   <span class="label label-important">${user.email}</span> 
+                                    ${user.email}
                                     <a href="./Exit.jsp" class="navbar-link">退出</a>
                                 </p>  
                                     <ul class="nav">
@@ -75,7 +72,7 @@
             <div class="span12">                     
                 <div class="hero-flower">                        
                     <div class="item">
-                        <marquee>恋爱ing，爱的玫瑰火热传递中……</marquee>
+                        以下为您搜索的结果：
                     </div>
                 </div> 
             </div>
@@ -83,11 +80,11 @@
             <div class="span12">     
                 <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=1)" width="100%" color=#987cb9 SIZE=3>
                 <%
-                ArrayList flowers=flower.GetFlowerData();
+                String condition=request.getParameter("condition");
+                ArrayList flowers=flower.SearchResult(condition);
                 Iterator iter=flowers.iterator();
                 while(iter.hasNext()) {
                     Product p=(Product)iter.next();
-                    
                 %>
                 
                 <div class="spanf">
@@ -97,47 +94,13 @@
                     <%
                         if(user!=null)
                             {
-                            String count="count"+p.getId();
-                    %>                     
-                     <div class="sapn3">
-                              <div class="input-prepend input-append">
-                                  <script type="text/javascript">
-                                            function minus(id)
-                                            {
-                                                    var count = document.getElementById(id).value;                                                    
-                                                    document.getElementById(id).value = count-1;
-                                            }
-                                    </script>
-                                    <script type="text/javascript">
-                                            function plus(id)
-                                            {
-                                                    var number=document.getElementById(id).value;                                                                                                  
-                                                    var cont=parseInt(number)+1;
-                                                    document.getElementById(id).value = cont;
-                                            }
-                                    </script>
-                                   <input type="button" class="btn" value="-" onclick="minus(<%=p.getId()%>)">
-                                   <input type="text" class="span1"  value="1" id="<%=p.getId() %>">
-                                   <input type="button"  class="btn" value="+" onclick="plus(<%=p.getId()%>)">                                     
-                                  <input class="btn btn-info" value="加入小车" type="button" onclick="{window.location.href='MyCar.jsp?id=<%=p.getId()%>&count='+document.getElementById(<%=p.getId()%>).value;}">                                
-                              </div>                                                          
-                              </div>                                                   
+                    %>
+                    <input class="btn btn-info" value="加入小车" type="button" onclick="{window.location.href='MyCar.jsp?id=<%=p.getId()%>'}">
                     <%
                         }
                         else{
-                        
-                         %>     
-                         
-                         
-                         
-                           <div class="sapn3">
-                              <div class="input-prepend input-append">
-                                   <input type="button" class="btn" value="-" onclick="minus()" disabled=true>
-                                   <input type="text" class="span1" readonly value="1" id="count">
-                                   <input type="button"  class="btn" value="+" onclick="plus()" disabled=true>                                     
-                                  <input class="btn btn-info disabled" value="加入小车" type="button">                                
-                              </div>                                                          
-                              </div>                                 
+                         %>
+                              <input class="btn btn-info disabled" value="加入小车" type="button">      
                         <%
                         }
                     %>

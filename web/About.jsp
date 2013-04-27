@@ -15,14 +15,8 @@
             <div class="container-fluid">
               <a class="brand" href=".">恋爱ing</a>
               <div class="nav-collapse collapse">
-                <p class="navbar-text pull-right">
-                   <a href="./Login.jsp" class="navbar-link">Login in</a>
-                   <a href="./Register.jsp" class="navbar-link">   Register</a>
-                </p>
                 <ul class="nav">
                   <li><a href=".">首页</a></li> 
-                  <li><a href="./Cart.jsp">我的小车</a></li>
-                  <li><a href="./Bill.jsp">历史订单</a></li>
                   <li  class="active"><a href="./About.jsp">关于我们</a></li>
                 </ul>
               </div>

@@ -21,14 +21,16 @@
                 <div class="span12">
                     <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=1)" width="100%" color=#987cb9 SIZE=3>
                     <%
-                    String id=(String)session.getAttribute("order_product_id");
+                    String name=(String)session.getAttribute("order_product_name");
                     session.removeAttribute("car");
-                    String ids[]=id.split(",");
-                    if(ids.length !=0){
-                        for(int i=0;i<ids.length;i++){
+                    String names[]=name.split(",");
+                    if(names.length !=0){
+                        for(int i=0;i<names.length;i++){
                             
-                            Product p=product.FindProductById(Integer.parseInt(ids[i]));
-                            product.UpdateSalesById(Integer.parseInt(ids[i]),p.getSales());
+                            Product p=product.FindProductByName((String)names[i]);
+                             String count=(String)session.getAttribute("count"+(p.getId()));
+                             int cnt=Integer.parseInt(count);
+                            product.UpdateSalesById(p.getId(),p.getSales(),cnt);
                     
                     %>                         
                     <div class="span5">
@@ -41,8 +43,7 @@
                             <h4><a href="FlowerDetails.jsp?id=<%= p.getId()%>"><%=p.getName()%></a></h4>
                             <h6>销量：<%=p.getSales()%> 价格：<%=p.getPrice()%></h6>
                         </div>
-                    </div>               
-                    
+                    </div>                                   
                     <%
                         }
                     } else{

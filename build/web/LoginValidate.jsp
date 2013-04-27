@@ -2,7 +2,6 @@
 <%@page pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="pack.LoginBean" %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -15,11 +14,33 @@
     </head>
     <body>
         <%
+            String name=request.getParameter("email");
+            String pass=request.getParameter("password");
+            if(name==null){
+                out.print("<script language=javascript>alert('email为空！');history.go(-1)</script>");
+            }           
+            if(pass==null){
+                out.print("<script language=javascript>alert('password为空！');history.go(-1)</script>");
+            }            
+            
             boolean flag=login.LoginValidate();
-             if(flag=true)
-                 out.println("Successful");
-             else
-                 out.println("Unsuccessful");
+            response.setCharacterEncoding("GBK");
+            request.setCharacterEncoding("GBK");
+            
+             if(flag==true){
+                String email=request.getParameter("email");
+                String password=request.getParameter("password");
+                LoginBean user=new LoginBean();
+                user.setEmail(email);
+                user.setPassword(password);
+                session.setAttribute("user",user);
+                 //response.sendRedirect("SuccessPage.jsp?message=Login Successful");
+                 response.sendRedirect("index.jsp");
+                 }
+             else{
+                 
+                 response.sendRedirect("Login.jsp");
+                 }
         %>
     </body>
 </html>

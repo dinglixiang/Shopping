@@ -19,16 +19,17 @@
     <body>
         <%
        int id=Integer.parseInt(request.getParameter("id"));
+       String count=request.getParameter("count");
+       session.setAttribute("count"+id,count);
        Product tmp=flower.FindProductById(id);  
        String name=tmp.getName();
        int sales=tmp.getSales();
        String describe=tmp.getDescribe();
        float price=tmp.getPrice();
-       //out.println(id);
-         
+        
        Product goods=new Product(id,name,price,describe,sales);
        ArrayList bills=null;
-      // session.setAttribute("carts",bills);
+
               
         if((ArrayList)session.getAttribute("car")==null)  
         {  
@@ -50,13 +51,6 @@
                         out.println("<script language=javascript>alert('已购买！');history.go(-1)</script>");
                         return;
                     }
-                    //else
-                    //{
-                        //bills.add(goods);
-                        
-                        //break;
-                   // }
-                
             }
                  bills.add(goods);
                  response.sendRedirect("flowers.jsp");

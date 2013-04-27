@@ -30,11 +30,11 @@
                             <%
                             String email=(String)session.getAttribute("admin_e");
                             if(email==null){
-                                response.sendRedirect("admin.jsp");
+                                response.sendRedirect("AdminLogin.jsp");
                             }
                             else{
                         %>
-                        <span class="label label-important"> ${initParam.email}</span>
+                           ${initParam.email}
                            <a href="./Exit.jsp" class="navbar-link">退出</a>
                         </p>
                         <ul class="nav">
@@ -65,7 +65,8 @@
                         <th width="20%">产品销量</th>
                         <th width="30%" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作</th>
                         <%
-                        ArrayList flowers=flower.GetFlowerData();
+                        String condition=request.getParameter("condition");
+                        ArrayList flowers=flower.SearchResult(condition);
                         Iterator iter=flowers.iterator();
                         while(iter.hasNext()) {
                             Product p=(Product)iter.next();

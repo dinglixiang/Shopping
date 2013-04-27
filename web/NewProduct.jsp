@@ -18,7 +18,25 @@
     </head>
     
     <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href=".">恋爱ing</a>
+
+                            <%
+                            String email=(String)session.getAttribute("admin_e");
+                            if(email==null){
+                                response.sendRedirect("AdminLogin.jsp");
+                            }
+                        %>
+                </div>
+            </div>
+        </div>
+        <br><br> <br>
+        
         <div class="container">
+            <h3 align="center">新建产品</h3>
+            <h4><a target=main onclick ="javascript:history.go(-1);">返回继续</a></h4>
             <form method="post" action="StoreProduct.jsp">
                 <h4>
                     产品名称

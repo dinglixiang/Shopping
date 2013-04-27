@@ -16,6 +16,22 @@
     </head>
     <body>
         <% 
+            String name=request.getParameter("email");
+            String pass=request.getParameter("password");
+            String confirm=request.getParameter("confirmpassword");
+            if(name==null){
+                out.print("<script language=javascript>alert('email为空！');history.go(-1)</script>");
+               // response.sendRedirect("Register.jsp");
+            }           
+            if(pass==null){
+                out.print("<script language=javascript>alert('密码为空！');history.go(-1)</script>");
+               // response.sendRedirect("Register.jsp");
+            }
+            if(confirm==null){
+                out.print("<script language=javascript>alert('确认密码为空！');history.go(-1)</script>");
+               // response.sendRedirect("Register.jsp");
+            }
+            
             int flag=register.insertRegisterData();
             if(flag==1){                
                  %> 
