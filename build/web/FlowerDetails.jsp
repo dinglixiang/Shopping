@@ -16,10 +16,10 @@
             Product p=product.FindProductById(Integer.parseInt(id));          
         %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
         <title><%= p.getName()%></title>
         
-        <script type="text/javascript" src="jquery-1.4.1.js"></script>
+        <script type="text/javascript" src="js/jquery-1.4.1.js"></script>
         <style type="text/css">
         .go{width:47px;height:65px;position:fixed;_position:absolute;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||200)-(parseInt(this.currentStyle.marginBottom,10)||0)));right:20px;bottom:30%; background-color: lightgoldenrodyellow; background-repeat:no-repeat;}
         .go a{text-indent:999em;width:37px;margin:5px;border:0;overflow:hidden;float:left; cursor:pointer;}

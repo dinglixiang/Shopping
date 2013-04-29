@@ -6,8 +6,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>恋爱ing</title>
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="login.css" rel="stylesheet" type="text/css" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="css/login.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
       <div class="navbar navbar-fixed-top">

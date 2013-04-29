@@ -10,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>恋爱ing</title>
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="flower.css" rel="stylesheet" type="text/css" />
+       <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="css/flower.css" rel="stylesheet" type="text/css" />
         <jsp:useBean id="flower" scope="application" class="pack.FlowerBean"/>
         
         
@@ -78,9 +78,7 @@
                         <marquee>恋爱ing，爱的玫瑰火热传递中……</marquee>
                     </div>
                 </div> 
-            </div>
-            
-            <div class="span12">     
+              
                 <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=1)" width="100%" color=#987cb9 SIZE=3>
                 <%
                 ArrayList flowers=flower.GetFlowerData();

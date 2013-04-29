@@ -15,9 +15,18 @@
         <base href="<%=basePath%>">
         <meta http-equiv="Content-Type" content="text/html; charset=GBK">
         <title>新建产品</title>
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="ckeditor/contents.css">
         <jsp:useBean id="flower" scope="application" class="pack.FlowerBean"/>
+        
+        <script type ="text/javascript " >
+            function vailFloatNumberPerfect(evnt,obj){
+             evnt=evnt||window.event;
+             var keyCode=window.event?evnt.keyCode:evnt.which;
+             if((obj.value.length==0 || obj.value.indexOf(".")!=-1) && keyCode==46) return false;
+             return keyCode>=48&&keyCode<=57||keyCode==46||keyCode==8;
+            }
+       </script>
     </head>
     
     <body>
@@ -35,7 +44,10 @@
 
                 <h4>
                     产品价格
-                    <input type="text" name="price" value="<%= p.getPrice()%>"/>
+                    <input type="text" name="price" value="<%= p.getPrice()%>" onkeypress = "return vailFloatNumberPerfect(event,this) "   
+onpaste = "return !clipboardData.getData('text').match(/\D/) "   
+ondragenter = "return false "   
+style = "ime-mode:Disabled " />
                 </h4>
 
                 <h4>

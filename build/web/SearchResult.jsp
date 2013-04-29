@@ -10,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>恋爱ing</title>
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="flower.css" rel="stylesheet" type="text/css" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="css/flower.css" rel="stylesheet" type="text/css" />
         <jsp:useBean id="flower" scope="application" class="pack.FlowerBean"/>
     </head>
     <body>

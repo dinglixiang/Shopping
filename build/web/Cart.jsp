@@ -13,8 +13,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="flower.css" rel="stylesheet" type="text/css" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="css/flower.css" rel="stylesheet" type="text/css" />
         <jsp:useBean id="flower" scope="application" class="pack.FlowerBean"/>
         <title>购物车</title>
     </head>

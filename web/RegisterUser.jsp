@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>注册用户</title>
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
         <jsp:useBean id="register" scope="application" class="pack.RegisterBean"/>
         <jsp:setProperty name="register" property="*"/>
     </head>

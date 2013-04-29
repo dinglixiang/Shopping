@@ -8,8 +8,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>恋爱ing</title>
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <script language="javascript" src="bootstrap/js/bootstrap.js" type="text/javascript"></script>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+        
+        <!--<script language="javascript" src="bootstrap/js/bootstrap.js" type="text/javascript"></script>-->
     </head>
     <body>
       
@@ -82,24 +83,12 @@
                   </div>
               </div>
               <div class="span9">
-                  <div class="hero-unit">
-                      <div id="myCarousel" class="carousel slide">
-                          <div class="carousel-inner">
-                            <div class="item active">
-                              <img src="images/slide-01.jpg" alt="">                           
-                            </div>
-                            <div class="item">
-                              <img src="images/slide-02.jpg" alt="">    
-                            </div>
-                            <div class="item">
-                              <img src="images/slide-03.jpg" alt="">
-                            </div>
-                          </div>
-                          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-                        </div>
+                  <div class="hero-unit">            
+                   <a href="#"><img src="images/slide-01.jpg"></a>
+                            
+                </div>           
                         
-                  </div>
+                  
                   <div class="row-fluid">
                       <div class="span4">
                           <h2>点滴幸福</h2>
@@ -118,6 +107,8 @@
                       </div>
                   </div>
                   <hr width="100%" color="#ADADAD" SIZE=3>
+                  </div>
+                  
               </div>
               <footer align="center">
                   <copyright:myCopyright/>

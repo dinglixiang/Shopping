@@ -4,8 +4,8 @@
 <html>
   <head>
     <title>恋爱ing登录</title>
-    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
-    <link href="login.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="css/login.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
       <div class="container">

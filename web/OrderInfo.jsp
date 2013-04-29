@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>订单信息</title>
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
         <jsp:useBean id="product" scope="application" class="pack.FlowerBean"/>
     </head>
     <body> 
