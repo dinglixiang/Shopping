@@ -94,13 +94,43 @@
                     <%
                         if(user!=null)
                             {
-                    %>
-                    <input class="btn btn-info" value="加入小车" type="button" onclick="{window.location.href='MyCar.jsp?id=<%=p.getId()%>'}">
+                    String count="count"+p.getId();
+                    %>                     
+                     <div class="sapn3">
+                              <div class="input-prepend input-append">
+                                  <script type="text/javascript">
+                                            function minus(id)
+                                            {
+                                                    var count = document.getElementById(id).value;                                                    
+                                                    document.getElementById(id).value = count-1;
+                                            }
+                                    </script>
+                                    <script type="text/javascript">
+                                            function plus(id)
+                                            {
+                                                    var number=document.getElementById(id).value;                                                                                                  
+                                                    var cont=parseInt(number)+1;
+                                                    document.getElementById(id).value = cont;
+                                            }
+                                    </script>
+                                   <input type="button" class="btn" value="-" onclick="minus(<%=p.getId()%>)">
+                                   <input type="text" class="span1"  value="1" id="<%=p.getId() %>">
+                                   <input type="button"  class="btn" value="+" onclick="plus(<%=p.getId()%>)">                                     
+                                  <input class="btn btn-info" value="加入小车" type="button" onclick="{window.location.href='MyCar.jsp?id=<%=p.getId()%>&count='+document.getElementById(<%=p.getId()%>).value;}">                                
+                              </div>                                                          
+                              </div>                                                   
                     <%
                         }
                         else{
                          %>
-                              <input class="btn btn-info disabled" value="加入小车" type="button">      
+                              <div class="sapn3">
+                              <div class="input-prepend input-append">
+                                   <input type="button" class="btn" value="-" onclick="minus()" disabled=true>
+                                   <input type="text" class="span1" readonly value="1" id="count">
+                                   <input type="button"  class="btn" value="+" onclick="plus()" disabled=true>                                     
+                                  <input class="btn btn-info disabled" value="加入小车" type="button">                                
+                              </div>                                                          
+                              </div>         
                         <%
                         }
                     %>
