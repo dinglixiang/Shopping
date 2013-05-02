@@ -21,6 +21,7 @@
               <div class="nav-collapse collapse">
                 
                 <% 
+                            session.removeAttribute("admin_e");
                             LoginBean user=(LoginBean)session.getAttribute("user");
                             if(user!=null){
                                 %>

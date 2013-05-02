@@ -32,7 +32,7 @@
                             else{
                         %>
                         <p class="navbar-text pull-right">
-                            ${initParam.email}
+                            <span class="label label-important"> ${initParam.email}</span>
                            <a href="./Exit.jsp" class="navbar-link">退出</a>
                         </p>
                         <ul class="nav">

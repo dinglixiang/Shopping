@@ -35,7 +35,24 @@
             Product p=flower.FindProductById(id);
             
         %>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href="./AdminProducts.jsp">恋爱ing</a>
+
+                            <%
+                            String email=(String)session.getAttribute("admin_e");
+                            if(email==null){
+                                response.sendRedirect("AdminLogin.jsp");
+                            }
+                        %>
+                </div>
+            </div>
+        </div>
+        <br><br> <br>
         <div class="container">
+            <h3 align="center">编辑产品</h3>
+            <h4><a target=main onclick ="javascript:history.go(-1);">返回继续</a></h4>
             <form method="post" action="UpdateProduct.jsp?id=<%= p.getId()%>&sales=<%= p.getSales()%>">
                 <h4>
                     产品名称

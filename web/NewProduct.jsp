@@ -30,7 +30,7 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
-                    <a class="brand" href=".">恋爱ing</a>
+                    <a class="brand" href="./AdminProducts.jsp">恋爱ing</a>
 
                             <%
                             String email=(String)session.getAttribute("admin_e");

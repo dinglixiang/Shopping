@@ -26,7 +26,7 @@
                                 %>
                                 
                                 <p class="navbar-text pull-right">
-                                    ${user.email}
+                                   <span class="label label-important">${user.email}</span> 
                                     <a href="./Exit.jsp" class="navbar-link">退出</a>
                                 </p>  
                                     <ul class="nav">
